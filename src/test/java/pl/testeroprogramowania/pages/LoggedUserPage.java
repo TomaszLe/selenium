@@ -7,15 +7,19 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoggedUserPage {
 
-    @FindBy(xpath = "//h1[@class='entry-title']")
-    private WebElement entryTitle;
+    @FindBy(linkText = "Dashboard")
+    private WebElement dashboardLink;
 
     private WebDriver driver;
+
     public LoggedUserPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver=driver;
+        this.driver = driver;
     }
-    public WebElement getEntryTitle(){
-        return entryTitle;
+
+    public WebElement getDashboardLink() {
+        return dashboardLink;
     }
+
+
 }

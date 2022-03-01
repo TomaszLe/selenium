@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage {
+
     @FindBy(name = "add-to-cart")
     private WebElement addToCartButton;
 

@@ -1,9 +1,12 @@
 package pl.testeroprogramowania.pages;
 
+import org.bouncycastle.operator.bc.BcSignerOutputStream;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+import pl.testeroprogramowania.models.Customer;
 
 public class AddressDetailsPage {
     @FindBy(id = "billing_first_name")
@@ -15,8 +18,8 @@ public class AddressDetailsPage {
     @FindBy(id = "billing_company")
     private WebElement companyNameInput;
 
-    @FindBy(id = "select2-billing_country-container")
-    private WebElement countrySelect;
+    @FindBy(id = "billing_country")
+    private WebElement billingCountrySelect;
 
     @FindBy(id = "billing_address_1")
     private WebElement addressFirstInput;
@@ -50,5 +53,24 @@ public class AddressDetailsPage {
     public AddressDetailsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver=driver;
+
+    }
+
+    public OrderDetailsPage fillAddressDetails(Customer customer, String comments){
+        firstNameInput.sendKeys(customer.getFirstName());
+        lastNameInput.sendKeys(customer.getLastName());
+        companyNameInput.sendKeys(customer.getCompanyName());
+        Select countrySelect = new Select(billingCountrySelect);
+        countrySelect.selectByVisibleText(customer.getCountry());
+        addressFirstInput.sendKeys(String.format("%s %s", customer.getStreet(), customer.getFlatNumber()));
+        postcodeInput.sendKeys(customer.getZipCode());
+        cityInput.sendKeys(customer.getCity());
+        phoneInput.sendKeys(customer.getPhone());
+        emailInput.sendKeys(customer.getEmail());
+        orderCommentsInput.sendKeys(comments);
+        placeOrderButton.click();
+
+
+        return new OrderDetailsPage(driver);
     }
 }

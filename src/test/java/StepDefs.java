@@ -63,4 +63,11 @@ public class StepDefs {
         Assert.assertTrue(error.getText().contains(" An account is already registered with your email address"));
 
     }
+
+    @When("User logs to the aplication")
+    public void userLogsToTheAplication() {
+        new HomePage(driver)
+                .openMyAccountPage()
+                .logInValidData(email, "test33@select.com");
+    }
 }

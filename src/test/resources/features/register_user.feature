@@ -1,6 +1,6 @@
 
 Feature: Register user
-  Register user feature test for selenium demo app.Testy funkcjonalnosci dodawania nowego uzytkownika
+  Register user feature test for selenium demo app.
   Description will be ignored and will not affect test execution.
 
 

@@ -3,29 +3,28 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDefs {
-    @Given("Uzytkownik z unikalnym adresem email")
-    public void uzytkownikZUnikalnymAdresemEmail() {
-        System.out.println("Tworzenie użytkownika z unikalnym adresem");
+    @Given("User with unique email address")
+    public void userWithUniqueEmailAddress() {
+        System.out.println("User with unique email address");
     }
 
-    @When("Uzytkownik rejestruje sie w aplikacji")
-    public void uzytkownikRejestrujeSieWAplikacji() {
-        System.out.println("Rejestracja uzytkownika");
+    @When("User registers in app")
+    public void userRegistersInApp() {
+        System.out.println("User registers in app");
     }
 
-    @Then("Uzytkownik powinien zostac przeniesiony na strone zalogowanego uzytkownika")
-    public void uzytkownikPowinienZostacPrzeniesionyNaStroneZalogowanegoUzytkownika() {
-        System.out.println("Asercka spr czy uzytkownik jest na odpowiedniej stronie");
+    @Then("User should be redirected to logged user page")
+    public void userShouldBeRedirectedToLoggedUserPage() {
+        System.out.println("User should be redirected to logged user page");
     }
 
-    @Given("Uzytkownik z istniejacym w aplikacji adresem email")
-    public void uzytkownikZIstniejacymWAplikacjiAdresemEmail() {
-        System.out.println("Tworzenie użytkownika z adresem istniejacym w aplikacji");
+    @Given("User with existent email address")
+    public void userWithExistentEmailAddress() {
+        System.out.println("User with existent email address");
     }
 
-    @Then("Zostaje wyswietlony komunikat {string} a uzytkownik pozostaje na stronie logowania")
-    public void zostajeWyswietlonyKomunikatAUzytkownikPozostajeNaStronieLogowania(String arg0) {
-        System.out.println("Sprawdzenie czy zostal wyswietlony blad");
+    @Then("An error will bi displayed {string}, user ist still on login page")
+    public void anErrorWillBiDisplayedUserIstStillOnLoginPage(String arg0) {
+        System.out.println("An error will bi displayed, user ist still on login page");
     }
-
 }

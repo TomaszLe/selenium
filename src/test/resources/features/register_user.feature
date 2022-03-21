@@ -1,16 +1,16 @@
 
-Feature: Rejestracja uzytkownika
-  Testy funkcjonalnosci dodawania nowego uzytkownika
-  w aplikacji seleniumdemo. Linijki opisu są pomijane
-  i nie mają wpływu na wykonanie testu
+Feature: Register user
+  Register user feature test for selenium demo app.Testy funkcjonalnosci dodawania nowego uzytkownika
+  Description will be ignored and will not affect test execution.
 
-  Scenario: Tworzenie uzytkownika z unikalnym adresem email
-    Given Uzytkownik z unikalnym adresem email
-    When Uzytkownik rejestruje sie w aplikacji
-    Then Uzytkownik powinien zostac przeniesiony na strone zalogowanego uzytkownika
+
+  Scenario: Register user with unique email address
+    Given User with unique email address
+    When User registers in app
+    Then User should be redirected to logged user page
 
   Scenario: Tworzenie uzytkownika z adresem email ktory juz istnieje w bazie danych
 
-    Given Uzytkownik z istniejacym w aplikacji adresem email
-    When Uzytkownik rejestruje sie w aplikacji
-    Then Zostaje wyswietlony komunikat " An account is already registered with your email address" a uzytkownik pozostaje na stronie logowania
+    Given User with existent email address
+    When User registers in app
+    Then An error will bi displayed " An account is already registered with your email address", user ist still on login page

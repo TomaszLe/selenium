@@ -3,7 +3,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverFactory.getDriver();
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pl.testeroprogramowania.pages.HomePage;
@@ -11,25 +11,13 @@ import pl.testeroprogramowania.pages.LoggedUserPage;
 import pl.testeroprogramowania.pages.MyAccountPage;
 import pl.testeroprogramowania.utils.DriverFactory;
 
+
 import java.util.concurrent.TimeUnit;
 
 public class StepDefs {
 
-    private WebDriver driver;
-    private String email;
+    protected String email;
 
-    @Before
-    public void setup() {
-        driver = DriverFactory.getDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get("http://seleniumdemo.com");
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 
     @Given("User with unique email address")
     public void userWithUniqueEmailAddress() {
@@ -40,7 +28,7 @@ public class StepDefs {
 
     @When("User registers in app")
     public void userRegistersInApp() {
-        new HomePage(driver)
+        new HomePage(DriverFactory.getDriver())
                 .openMyAccountPage()
                 .registerUserValidData(email, "test33@select.com")
                 .getDashboardLink();
@@ -48,7 +36,7 @@ public class StepDefs {
 
     @Then("User should be redirected to logged user page")
     public void userShouldBeRedirectedToLoggedUserPage() {
-        WebElement dashboardLink = new LoggedUserPage(driver).getDashboardLink();
+        WebElement dashboardLink = new LoggedUserPage(DriverFactory.getDriver()).getDashboardLink();
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 
@@ -59,15 +47,17 @@ public class StepDefs {
 
     @Then("An error will bi displayed {string}, user ist still on login page")
     public void anErrorWillBiDisplayedUserIstStillOnLoginPage(String arg0) {
-        WebElement error = new MyAccountPage(driver).getError();
+        WebElement error = new MyAccountPage(DriverFactory.getDriver()).getError();
         Assert.assertTrue(error.getText().contains(" An account is already registered with your email address"));
 
     }
 
     @When("User logs to the aplication")
     public void userLogsToTheAplication() {
-        new HomePage(driver)
+        new HomePage(DriverFactory.getDriver())
                 .openMyAccountPage()
                 .logInValidData(email, "test33@select.com");
     }
-}
+
+    }
+

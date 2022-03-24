@@ -1,12 +1,10 @@
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.openqa.selenium.WebDriver;
-import pl.testeroprogramowania.models.Customer;
 import pl.testeroprogramowania.utils.DriverFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseStepDefs {
+public class Hooks {
 
 
 
@@ -19,7 +17,7 @@ public class BaseStepDefs {
 
     @After
     public void tearDown() {
-        driver.quit();
+        DriverFactory.quitDriver();
     }
 
 }

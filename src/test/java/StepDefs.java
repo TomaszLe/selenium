@@ -1,9 +1,7 @@
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriverFactory.getDriver();
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pl.testeroprogramowania.pages.HomePage;

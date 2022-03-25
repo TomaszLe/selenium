@@ -69,8 +69,6 @@ public class AddressDetailsPage {
         emailInput.sendKeys(customer.getEmail());
         orderCommentsInput.sendKeys(comments);
         placeOrderButton.click();
-
-
         return new OrderDetailsPage(driver);
     }
 }

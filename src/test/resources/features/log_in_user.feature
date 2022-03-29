@@ -4,6 +4,6 @@ Feature: Login user
 
 
   Scenario: Login user with valid email address
-    Given User with existent email address
-    When User logs to the aplication
+    Given User with existent email address "test1@select.com"
+    When User logs to the application
     Then User should be redirected to logged user page

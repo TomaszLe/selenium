@@ -41,31 +41,17 @@ public class MyAccountPage {
         return new LoggedUserPage(driver);
     }
 
-    public MyAccountPage registerUserInvData(String email, String password) {
-        registerUser(email, password);
-        return this;
-    }
-
-    private void registerUser(String email, String password) {
+     private void registerUser(String email, String password) {
         regEmailInput.sendKeys(email);
         regPasswordInput.sendKeys(password);
         registerButton.click();
     }
 
     public LoggedUserPage logInValidData(String username, String password) {
-        logIn(username, password);
-        return new LoggedUserPage(driver);
-    }
-
-    public MyAccountPage logInInvalidData(String username, String password) {
-        logIn(username, password);
-        return this;
-    }
-
-    private void logIn(String username, String password) {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
+        return new LoggedUserPage(driver);
     }
 
     public WebElement getError() {

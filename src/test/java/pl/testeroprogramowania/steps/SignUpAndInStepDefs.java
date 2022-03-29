@@ -14,9 +14,10 @@ import pl.testeroprogramowania.utils.DriverFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class StepDefs {
+public class SignUpAndInStepDefs {
 
     protected String email;
+    private LoggedUserPage loggedUserPage;
 
 
     @Given("User with unique email address")
@@ -28,36 +29,35 @@ public class StepDefs {
 
     @When("User registers in app")
     public void userRegistersInApp() {
-        new HomePage(DriverFactory.getDriver())
+        loggedUserPage = new HomePage(DriverFactory.getDriver())
                 .openMyAccountPage()
-                .registerUserValidData(email, "test33@select.com")
-                .getDashboardLink();
+                .registerUserValidData(email, "test33@select.com");
     }
 
     @Then("User should be redirected to logged user page")
     public void userShouldBeRedirectedToLoggedUserPage() {
-        WebElement dashboardLink = new LoggedUserPage(DriverFactory.getDriver()).getDashboardLink();
+        WebElement dashboardLink = loggedUserPage.getDashboardLink();
         Assert.assertEquals(dashboardLink.getText(), "Dashboard");
     }
 
-    @Given("User with existent email address")
-    public void userWithExistentEmailAddress() {
-        email="test1@select.com";
-    }
 
     @Then("An error will bi displayed {string}, user ist still on login page")
-    public void anErrorWillBiDisplayedUserIstStillOnLoginPage(String arg0) {
+    public void anErrorWillBiDisplayedUserIstStillOnLoginPage(String errors) {
         WebElement error = new MyAccountPage(DriverFactory.getDriver()).getError();
-        Assert.assertTrue(error.getText().contains(" An account is already registered with your email address"));
+        Assert.assertTrue(error.getText().contains(errors));
 
     }
 
-    @When("User logs to the aplication")
-    public void userLogsToTheAplication() {
-        new HomePage(DriverFactory.getDriver())
+    @When("User logs to the application")
+    public void userLogsToTheApplication() {
+        loggedUserPage = new HomePage(DriverFactory.getDriver())
                 .openMyAccountPage()
                 .logInValidData(email, "test33@select.com");
     }
 
+    @Given("User with existent email address {string}")
+    public void userWithExistentEmailAddress(String email) {
+        this.email=email;
     }
+}
 

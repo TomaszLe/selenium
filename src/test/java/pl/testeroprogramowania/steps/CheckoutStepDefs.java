@@ -31,12 +31,13 @@ public class CheckoutStepDefs  {
        productListPage = new HomePage(DriverFactory.getDriver()).openShopPage();
     }
 
-    @When("User selects product")
-    public void userSelectsProduct() {
-      cartPage = productListPage.openProductPage("Java Selenium WebDriver")
+    @When("User selects {string} product")
+    public void userSelectsProduct(String productName) {
+        cartPage = productListPage.openProductPage(productName)
                 .addProductToCart()
                 .viewCart();
     }
+
 
     @And("User fills address details")
     public void userFillsAddressDetails() {
@@ -49,4 +50,6 @@ public class CheckoutStepDefs  {
         Assert.assertEquals(orderDetailsPage.getOrderNotice().getText(), "Thank you. Your order has been received.");
         Assert.assertEquals(orderDetailsPage.getProductName().getText(), "Java Selenium WebDriver × 1");
     }
+
+
 }

@@ -11,6 +11,6 @@ Feature: Register user
 
   Scenario: Tworzenie uzytkownika z adresem email ktory juz istnieje w bazie danych
 
-    Given User with existent email address
+    Given User with existent email address "test1@select.com"
     When User registers in app
     Then An error will bi displayed " An account is already registered with your email address", user ist still on login page

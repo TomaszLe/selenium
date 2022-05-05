@@ -7,10 +7,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
     public static WebDriver getDriver() {
-        //WebDriverManager.chromedriver().setup();
-        //return new ChromeDriver();
-        WebDriverManager.firefoxdriver().setup();
-        return new FirefoxDriver();
+        WebDriverManager.chromedriver().setup();
+        return new ChromeDriver();
+       // WebDriverManager.firefoxdriver().setup();
+        //return new FirefoxDriver();
 
     }
 }

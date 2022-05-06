@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
     public static WebDriver getDriver() {
+        System.setProperty("webdriver.chrome.driver","D:/Szkolenie_tester/Chromedriver");
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
        // WebDriverManager.firefoxdriver().setup();

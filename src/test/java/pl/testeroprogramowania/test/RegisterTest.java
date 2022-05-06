@@ -20,7 +20,7 @@ public class RegisterTest extends BaseTest {
 
     }
 
-    @Test
+    //@Test
     public void registerUserWithSameEmailTest() {
         WebElement error = new HomePage(driver)
                 .openMyAccountPage()

@@ -4,8 +4,6 @@ pipeline {
       stages {
         stage('Build') {
             steps {
-                // Get some code from a GitHub repository
-                git 'https://github.com/TomLetki/cucumber.git'
 
                bat "mvn clean test"
             }

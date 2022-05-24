@@ -21,9 +21,7 @@ maven (3.8.2).
 
 #Reporting
 Cucumber reports you can find here:
- target/index.html
-
-and also as json file target/cucumber.json
+ target/index.html and also as json file target/cucumber.json
 
 
 
